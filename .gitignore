@@ -1,2 +1,27 @@
+# Data
+data/
+*.parquet
+*.duckdb
+*.db
+
+# Environment
+.env
+venv/
+.venv/
 __pycache__/
 *.pyc
+*.pyo
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
