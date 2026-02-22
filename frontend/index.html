@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StatsBomb Viz — Football Analytics Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="static/css/main.css" />
+</head>
+<body>
+
+  <!-- ── Header ─────────────────────────────────────────────────────────────── -->
+  <header>
+    <h1>⚽ StatsBomb Viz</h1>
+    <span class="badge">FIFA World Cup 2022</span>
+  </header>
+
+  <!-- ── Controls ───────────────────────────────────────────────────────────── -->
+  <div class="controls">
+    <div>
+      <label for="comp-select">Competition</label>
+      <select id="comp-select" disabled>
+        <option>Loading…</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="match-select">Match</label>
+      <select id="match-select" disabled>
+        <option>— Select competition first —</option>
+      </select>
+    </div>
+
+    <button id="load-btn" disabled>Load Dashboard</button>
+  </div>
+
+  <!-- ── Score banner ────────────────────────────────────────────────────────── -->
+  <div id="score-banner"></div>
+
+  <!-- ── Chart grid ──────────────────────────────────────────────────────────── -->
+  <main>
+    <div id="chart-grid" class="chart-grid">
+      <!-- Cards are injected by main.js -->
+      <div class="placeholder" style="grid-column:1/-1; padding:60px; text-align:center;">
+        <div class="icon">📊</div>
+        <p>Select a competition and match, then click <strong>Load Dashboard</strong>.</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="static/js/main.js"></script>
+</body>
+</html>

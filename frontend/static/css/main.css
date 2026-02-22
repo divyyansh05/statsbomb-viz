@@ -1,0 +1,228 @@
+/* ── Reset & base ──────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #0f1117;
+  --surface:   #1a1d2e;
+  --surface2:  #22263a;
+  --border:    #4a4e69;
+  --home:      #52b788;
+  --away:      #e63946;
+  --text:      #e0e0e0;
+  --text-muted:#9a9dbb;
+  --accent:    #7b8cde;
+  --radius:    8px;
+  --gap:       16px;
+}
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ── Header ────────────────────────────────────────────────────────────────── */
+header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+header h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.5px;
+}
+
+header .badge {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+/* ── Controls bar ───────────────────────────────────────────────────────────── */
+.controls {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.controls label {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-right: 4px;
+}
+
+.controls select {
+  background: var(--surface2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+  font-size: 13px;
+  min-width: 180px;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.controls select:focus {
+  border-color: var(--accent);
+}
+
+.controls select:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.controls button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+}
+
+.controls button:hover:not(:disabled) { opacity: 0.88; transform: translateY(-1px); }
+.controls button:disabled { opacity: 0.45; cursor: default; }
+
+/* ── Score banner ───────────────────────────────────────────────────────────── */
+#score-banner {
+  display: none;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 24px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+#score-banner .home { color: var(--home); font-weight: 700; }
+#score-banner .away { color: var(--away); font-weight: 700; }
+#score-banner .score { font-size: 1.4rem; font-weight: 800; margin: 0 12px; }
+#score-banner .meta  { color: var(--text-muted); font-size: 11px; margin-top: 2px; }
+
+/* ── Main content ───────────────────────────────────────────────────────────── */
+main {
+  padding: 24px;
+}
+
+/* ── Chart grid ─────────────────────────────────────────────────────────────── */
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(460px, 1fr));
+  gap: var(--gap);
+}
+
+/* ── Chart card ─────────────────────────────────────────────────────────────── */
+.chart-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-card .card-header {
+  padding: 10px 16px;
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chart-card .card-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.chart-card .team-pill {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.home-pill  { background: rgba(82,183,136,0.18); color: var(--home); }
+.away-pill  { background: rgba(230,57,70,0.18);  color: var(--away); }
+.both-pill  { background: rgba(123,140,222,0.18); color: var(--accent); }
+
+.chart-card .card-body {
+  padding: 12px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+}
+
+.chart-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  display: block;
+}
+
+/* ── States ─────────────────────────────────────────────────────────────────── */
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-muted);
+}
+
+.placeholder .icon { font-size: 2.5rem; opacity: 0.5; }
+.placeholder p     { font-size: 12px; }
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.error-msg {
+  color: var(--away);
+  font-size: 12px;
+  text-align: center;
+  padding: 8px;
+}
+
+/* ── Wider cards ─────────────────────────────────────────────────────────────── */
+.chart-card.full-width {
+  grid-column: 1 / -1;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .chart-grid { grid-template-columns: 1fr; }
+  .controls   { flex-direction: column; align-items: flex-start; }
+}

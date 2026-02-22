@@ -1,0 +1,14 @@
+# Competitions to download and process
+# Set enabled: true to include in pipeline runs
+
+competitions:
+  - competition_id: 43
+    season_id: 106
+    name: "FIFA World Cup 2022"
+    enabled: true
+
+  - competition_id: 2        # Premier League 
+    season_id: 27            # 2015/16 season
+    name: "Premier League 2015/16"
+    enabled: true
+

@@ -1,0 +1,1 @@
+"""StatsBomb ETL pipeline package."""
